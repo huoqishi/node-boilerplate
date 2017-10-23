@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "build": "cross-env NODE_ENV=production node index.js"
+    "build": "cross-env NODE_ENV=production node index.js",
+    
+    "apiserver": "browser-sync start --server ./apidoc --port 8080 --files \"./apidoc/vender/*.js,./apidoc/index.html\" & npm run watchapi",
+    "preapiserver":"npm run api",
+    "api": "apidoc -i controllers/ -o apidoc/ ",
+    "watchapi": "watch 'npm run api' ./controllers/"
   },
   "keywords": [],
   "author": "",

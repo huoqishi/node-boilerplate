@@ -7,3 +7,8 @@
 node_modules/
 npm-debug.log
 yarn-error.log
+
+# editor
+.vscode
+docs
+test

@@ -1,7 +1,7 @@
 /**
  * generate configuration according to environment
  */
-
+const url = require('url')
 const base = require('./config-base.js')
 
 let devOrProd
@@ -12,5 +12,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // the dev or prod will cover base
-const merge = Object.assign(base, devOrProd)
-module.exports = merge
+const config = Object.assign(base, devOrProd)
+config.origin = url.format(config)
+console.log(config)
+module.exports = config

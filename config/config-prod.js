@@ -2,6 +2,11 @@
  * the configuration for production
  */
 module.exports = {
-  PORT: 8080,
-  IP: '127.0.0.1'
+  // 数据库配置,
+  port: 8081,
+  db: {
+    dbname: 'xxx',
+    username: 'isc',
+    password: 'iftruelog(998)'
+  }
 }

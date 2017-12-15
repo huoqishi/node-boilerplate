@@ -2,22 +2,17 @@ const http = require('http')
 
 const express = require('express')
 const socketIO = require('socket.io')
-const session = require('express-session')
 const bodyParser = require('body-parser')
 const glob = require('glob')
-const config = require('./config/config.js')
+const config = require('./config')
+const {verfyToken} = require('./middleware/jsonwebtoken')
+const roleAuthority = require('./middleware/roleAuthority')
 
 const app = express()
 const server = http.createServer(app)
-const io = socketIO(server)
+// const io = socketIO(server)
 
-app.use(session({
-  secret: 'i am a chinese',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}))
-
+app.use(verfyToken)
 app.use(express.static('./public'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
